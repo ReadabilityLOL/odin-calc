@@ -1,20 +1,36 @@
 let string = '0';
 
-function add(x,y){
-	string += `+${x}`
+
+function number(x){
+	if(string == "0"){
+		string = `${x}`;
+	} else {
+		string += `${x}`;
+	}
+}
+
+function add(){
+	string += "+";
+}
+
+function mul(){
+	string += `*`;
+}
+
+function div(){
+	string += `/`
+}
+
+function sub(){
+	string += `-`
+}
+
+function equals(){
 	operate(string);
 }
 
-function mul(x,y){
-	return x*y;
-}
-
-function div(x,y){
-	return x/y;
-}
-
-function sub(x,y){
-	return x-y;
+function clear(){
+	string = "0";
 }
 
 function operate(operation){
@@ -22,18 +38,23 @@ function operate(operation){
 		;
 	}else if(operation.indexOf("+") != -1){
 		let result = operation.split("+");
-		return result[0]/1+result[1]/1;
+		string = result[0]/1+result[1]/1;
+		return string;
 
 	}else if(operation.indexOf("*") != -1){
 		let result = operation.split("*");
-		return result[0]/1*result[1]/1;
+		string =  result[0]/1*result[1]/1;
+		return string;
 
 	}else if(operation.indexOf("/") != -1){
 		let result = operation.split("/");
-		return result[0]/result[1];
+		string = result[0]/result[1];
+		return string;
 
 	}else if(operation.indexOf("-") != -1){
 		let result = operation.split("-");
-		return result[0]/1-result[1]/1;
+		string = result[0]/1-result[1]/1;
+		return string;
+		
 	}
 }
