@@ -1,5 +1,7 @@
 let string = '0';
+let tempstring = '';
 
+let output = document.querySelector('.output');
 
 function number(x){
 	if(string == "0"){
@@ -7,6 +9,10 @@ function number(x){
 	} else {
 		string += `${x}`;
 	}
+}
+
+function refresh(){
+	output.textContent = string;
 }
 
 function add(){
@@ -55,3 +61,5 @@ function operate(operation){
 		
 	}
 }
+
+refresh();
