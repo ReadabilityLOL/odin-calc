@@ -3,6 +3,7 @@ let displaystring = '0';
 
 let output = document.querySelector('.output');
 
+let operatorpressed = false;
 let justOperated = true;
 
 function number(x){
@@ -11,41 +12,47 @@ function number(x){
 		justOperated = false;
 		displaystring = `${x}`;
 	} else {
-		string += `${x}`;
-		displaystring += `${x}`;
+		if(operatorpressed){
+			displaystring = `${x}`;	
+			string += `${x}`;
+			operatorpressed = false;
+		} else {
+			string += `${x}`;
+			displaystring += `${x}`;
+		}
 	}
 	refresh();
 }
 
 function refresh(){
-	output.textContent = string;
+	output.textContent = displaystring;
 }
 
 function add(){
 	string += "+";
-	displaystring += "+";
 	justOperated = false;
+	operatorpressed = true;
 	refresh();
 }
 
 function mul(){
 	string += `*`;
-	displaystring += "*";
+	operatorpressed = true;
 	justOperated = false;
 	refresh();
 }
 
 function div(){
 	string += `/`
-	displaystring += "/";
+	operatorpressed = true;
 	justOperated = false;
 	refresh();
 }
 
 function sub(){
 	string += `-`
-	displaystring += "-";
 	justOperated = false;
+	operatorpressed = true;
 	refresh();
 }
 
@@ -65,18 +72,22 @@ function operate(operation){
 	}else if(operation.indexOf("+") != -1){
 		let result = operation.split("+");
 		string = result[0]/1+result[1]/1;
+		displaystring = string;
 
 	}else if(operation.indexOf("*") != -1){
 		let result = operation.split("*");
 		string =  result[0]/1*result[1]/1;
+		displaystring = string;
 
 	}else if(operation.indexOf("/") != -1){
 		let result = operation.split("/");
 		string = result[0]/result[1];
+		displaystring = string;
 
 	}else if(operation.indexOf("-") != -1){
 		let result = operation.split("-");
 		string = result[0]/1-result[1]/1;
+		displaystring = string;
 	}
 	justOperated = true;
 }
