@@ -3,12 +3,16 @@ let tempstring = '';
 
 let output = document.querySelector('.output');
 
+let justOperated = true;
+
 function number(x){
-	if(string == "0"){
+	if(justOperated){
 		string = `${x}`;
+		justOperated = false;
 	} else {
 		string += `${x}`;
 	}
+	refresh();
 }
 
 function refresh(){
@@ -17,22 +21,32 @@ function refresh(){
 
 function add(){
 	string += "+";
+	justOperated = false;
+	refresh();
 }
 
 function mul(){
 	string += `*`;
+	justOperated = false;
+	refresh();
 }
 
 function div(){
 	string += `/`
+	justOperated = false;
+	refresh();
 }
 
 function sub(){
 	string += `-`
+	justOperated = false;
+	refresh();
 }
 
 function equals(){
 	operate(string);
+	justOperated = false;
+	refresh();
 }
 
 
@@ -57,9 +71,9 @@ function operate(operation){
 	}else if(operation.indexOf("-") != -1){
 		let result = operation.split("-");
 		string = result[0]/1-result[1]/1;
-		return string;
-		
+		return string;	
 	}
+	justOperated = true;
 }
 
 refresh();
