@@ -9,10 +9,11 @@
 	<body>
 		<center><div class = container>
 			<div class = 'output'></div>
-			<button class = 'button' onclick = "number(1)">1</button> <button class = 'number' onclick = "number(2)">2</button> <button class = 'number' onclick = "number(3)">3</button> <button class = 'operator' onclick = 'add()'>+</button>
-			<button class = 'number' onclick = "number(4)">4</button> <button class = 'number' onclick = "number(5)">5</button> <button class = 'number' onclick = "number(6)">6</button> <button class = 'operator' onclick = 'sub()'>-</button>
-			<button class = 'number' onclick = "number(7)">7</button> <button class = 'number' onclick = "number(8)">8</button> <button class = 'number' onclick = "number(9)">9</button><button class = 'operator' onclick = 'mul()'>*</button>
-			<button class = 'number' onclick = "number(0)">0</button> <button class = 'equals' onclick = 'equals()'>=</button> <button class = 'operator' onclick = 'div()'>/</button> <button class = 'clear' onclick = 'string = 0;'>clear</button>
+			<div class = line><button class = 'operator other' onclick = 'string = 0;refresh();justOperated = true;'>ac</button><button class = 'operator other'>%</button><button class = 'operator other' onclick = 'negate();'>+/-</button><button class = 'operator' onclick = 'add()'>+</button></div>
+			<div class = 'line'><button class = 'number' onclick = "number(1)">1</button> <button class = 'number' onclick = "number(2)">2</button> <button class = 'number' onclick = "number(3)">3</button> <button class = 'operator' onclick = 'sub()'>-</button></div>
+			<div class = 'line'><button class = 'number' onclick = "number(4)">4</button> <button class = 'number' onclick = "number(5)">5</button> <button class = 'number' onclick = "number(6)">6</button> <button class = 'operator' onclick = 'mul()'>*</button></div>
+			<div class = 'line'> <button class = 'number' onclick = "number(7)">7</button> <button class = 'number' onclick = "number(8)">8</button> <button class = 'number' onclick = "number(9)">9</button><button class = 'operator' onclick = 'div()'>/</button></div>
+			<div class = 'line'><button class = 'number large' onclick = "number(0)">0</button> <button class = 'number'>.</button> <button class = 'operator' onclick = 'equals()'>=</button> </div>
 			</div>
 		</center>
 	</body>

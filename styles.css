@@ -1,8 +1,58 @@
 .container{
-	background-color:black;
+	background-color:grey;
+	top:30%;
+	right:40%;
+	position:absolute;
+	border-style:solid;
+	border-color:black;
+	border-width:1ch;
+	border-radius:10px;
+	font:fantasy;
 }
 
 .output{
 	color:white;
+	margin-bottom:0.25ch;
+	background-color:grey;
+	width:7ch;
 	font-size:9ch;
+	border-width:25px;
+	border-style:solid;
+	border-color:black;
+	border-radius:1px;
+	text-align:right;
+	margin-top:5%;
+	padding-right:0.5ch;
+	margin-left:0.5ch;
+	margin-right:0.5ch;
+}
+
+button{
+	flex:0.2 0 0;
+	aspect-ratio:1;
+	border-style:solid;
+	border-color:black;
+	border-radius:5px;
+}
+
+.number{
+	background-color:#00ffdf;
+}
+
+.operator{
+	background-color:#ffe300;
+}
+
+.operator.other{
+	background-color:#00ff00;
+}
+
+.large{
+	flex:0.41 0 0;
+	aspect-ratio:2;
+}
+
+.line{
+	display:flex;
+	padding-left:15%;
 }
