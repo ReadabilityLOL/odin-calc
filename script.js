@@ -29,9 +29,6 @@ function equals(){
 	operate(string);
 }
 
-function clear(){
-	string = "0";
-}
 
 function operate(operation){
 	if(operation == ''){
