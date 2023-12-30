@@ -15,7 +15,6 @@ function number(x){
 		if(operatorpressed){
 			displaystring = `${x}`;	
 			string += `${x}`;
-			operatorpressed = false;
 		} else {
 			string += `${x}`;
 			displaystring += `${x}`;
@@ -29,6 +28,9 @@ function refresh(){
 }
 
 function add(){
+	if(operatorpressed){
+		operate(string);
+	}
 	string += "+";
 	justOperated = false;
 	operatorpressed = true;
@@ -36,6 +38,9 @@ function add(){
 }
 
 function mul(){
+	if(operatorpressed){
+		operate(string);
+	}
 	string += `*`;
 	operatorpressed = true;
 	justOperated = false;
@@ -43,6 +48,9 @@ function mul(){
 }
 
 function div(){
+	if(operatorpressed){
+		operate(string);
+	}
 	string += `/`
 	operatorpressed = true;
 	justOperated = false;
@@ -50,6 +58,9 @@ function div(){
 }
 
 function sub(){
+	if(operatorpressed){
+		operate(string);
+	}
 	string += `-`
 	justOperated = false;
 	operatorpressed = true;
@@ -63,6 +74,7 @@ function equals(){
 
 function negate(){
 	string = '-'+string;
+	displaystring *= -1;
 	refresh();
 }
 
@@ -90,6 +102,10 @@ function operate(operation){
 		displaystring = string;
 	}
 	justOperated = true;
+	if(`${string.length}` >= 7){
+		string = string.toExponential();
+	}
+	operatorpressed = false;
 }
 
 refresh();
