@@ -3,6 +3,7 @@ let displaystring = '0';
 
 let output = document.querySelector('.output');
 
+let decimalenable = true;
 let operatorpressed = false;
 let justOperated = true;
 
@@ -35,6 +36,7 @@ function add(){
 	string += "+";
 	justOperated = false;
 	operatorpressed = true;
+	decimalenable = true;
 	refresh();
 }
 
@@ -45,6 +47,7 @@ function mul(){
 	string += `*`;
 	operatorpressed = true;
 	justOperated = false;
+	decimalenable = true;
 	refresh();
 }
 
@@ -55,6 +58,7 @@ function div(){
 	string += `/`
 	operatorpressed = true;
 	justOperated = false;
+	decimalenable = true;
 	refresh();
 }
 
@@ -65,6 +69,7 @@ function sub(){
 	string += `-`
 	justOperated = false;
 	operatorpressed = true;
+	decimalenable = true;
 	refresh();
 }
 
@@ -77,6 +82,15 @@ function negate(){
 	string = '-'+string;
 	displaystring *= -1;
 	refresh();
+}
+
+function decimal(){
+	if(decimalenable){
+		string += ".";
+		displaystring += ".";
+		decimalenable = false;
+		refresh();
+	}
 }
 
 function operate(operation){
@@ -110,7 +124,11 @@ function operate(operation){
 	if(string == Infinity || string == NaN){
 		displaystring = "Error";
 	}
+
+	//do clean up after operating
 	operatorpressed = false;
+	decimalenable = true;
+
 }
 
 refresh();
