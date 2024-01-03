@@ -102,8 +102,12 @@ function operate(operation){
 		displaystring = string;
 	}
 	justOperated = true;
-	if(`${string.length}` >= 7){
-		string = string.toExponential();
+	if(`${displaystring}`.length >= 7){
+		displaystring = Number(displaystring).toExponential();
+	}
+	
+	if(string == Infinity || string == NaN){
+		displaystring = "Error";
 	}
 	operatorpressed = false;
 }
