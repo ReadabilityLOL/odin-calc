@@ -15,6 +15,7 @@ function number(x){
 		if(operatorpressed){
 			displaystring = `${x}`;	
 			string += `${x}`;
+			operatorpressed = false;
 		} else {
 			string += `${x}`;
 			displaystring += `${x}`;
