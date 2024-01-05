@@ -6,7 +6,7 @@ let output = document.querySelector('.output');
 let decimalenable = true;
 let operatorpressed = false;
 let justOperated = true;
-
+let operatorEnable = true;
 function number(x){
 	if(justOperated){
 		string = `${x}`;
@@ -22,6 +22,7 @@ function number(x){
 			displaystring += `${x}`;
 		}
 	}
+	operatorEnable = true;
 	refresh();
 }
 
@@ -30,10 +31,13 @@ function refresh(){
 }
 
 function add(){
+	if(operatorEnable == false){
+		return;
+	}
+	string += "+";
 	if(operatorpressed){
 		operate(string);
 	}
-	string += "+";
 	justOperated = false;
 	operatorpressed = true;
 	decimalenable = true;
@@ -41,6 +45,10 @@ function add(){
 }
 
 function mul(){
+	if(operatorEnable == false){
+		return;
+	}
+	string += "+";
 	if(operatorpressed){
 		operate(string);
 	}
@@ -52,6 +60,10 @@ function mul(){
 }
 
 function div(){
+	if(operatorEnable == false){
+		return;
+	}
+	string += "+";
 	if(operatorpressed){
 		operate(string);
 	}
@@ -63,6 +75,10 @@ function div(){
 }
 
 function sub(){
+	if(operatorEnable == false){
+		return;
+	}
+	string += "+";
 	if(operatorpressed){
 		operate(string);
 	}
@@ -97,26 +113,29 @@ function operate(operation){
 	if(operation == ''){
 		;
 	}else if(operation.indexOf("+") != -1){
+		operation = operation.replace("*","").replace("-","").replace("/","");
 		let result = operation.split("+");
 		string = result[0]/1+result[1]/1;
 		displaystring = string;
 
 	}else if(operation.indexOf("*") != -1){
+		operation = operation.replace("+","").replace("-","").replace("/","");
 		let result = operation.split("*");
 		string =  result[0]/1*result[1]/1;
 		displaystring = string;
 
 	}else if(operation.indexOf("/") != -1){
+		operation = operation.replace("*","").replace("-","").replace("+","");
 		let result = operation.split("/");
 		string = result[0]/result[1];
 		displaystring = string;
 
 	}else if(operation.indexOf("-") != -1){
+		operation = operation.replace("*","").replace("+","").replace("/","");
 		let result = operation.split("-");
 		string = result[0]/1-result[1]/1;
 		displaystring = string;
 	}
-	justOperated = true;
 	if(`${displaystring}`.length >= 7){
 		displaystring = Number(displaystring).toExponential();
 	}
@@ -127,6 +146,7 @@ function operate(operation){
 
 	//do clean up after operating
 	operatorpressed = false;
+	justOperated = true;
 	decimalenable = true;
 
 }
