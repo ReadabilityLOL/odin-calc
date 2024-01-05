@@ -34,10 +34,10 @@ function add(){
 	if(operatorEnable == false){
 		return;
 	}
-	string += "+";
 	if(operatorpressed){
 		operate(string);
 	}
+	string += "+";
 	justOperated = false;
 	operatorpressed = true;
 	decimalenable = true;
@@ -48,7 +48,6 @@ function mul(){
 	if(operatorEnable == false){
 		return;
 	}
-	string += "+";
 	if(operatorpressed){
 		operate(string);
 	}
@@ -63,7 +62,6 @@ function div(){
 	if(operatorEnable == false){
 		return;
 	}
-	string += "+";
 	if(operatorpressed){
 		operate(string);
 	}
@@ -78,7 +76,6 @@ function sub(){
 	if(operatorEnable == false){
 		return;
 	}
-	string += "+";
 	if(operatorpressed){
 		operate(string);
 	}
@@ -110,6 +107,7 @@ function decimal(){
 }
 
 function operate(operation){
+	operation = `${operation}`;
 	if(operation == ''){
 		;
 	}else if(operation.indexOf("+") != -1){
@@ -137,7 +135,7 @@ function operate(operation){
 		displaystring = string;
 	}
 	if(`${displaystring}`.length >= 7){
-		displaystring = Number(displaystring).toExponential();
+		displaystring = `${Number(displaystring).toExponential()}`;
 	}
 	
 	if(string == Infinity || string == NaN){
